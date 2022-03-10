@@ -6,8 +6,16 @@ import utils.Converter;
 import java.io.PrintStream;
 import java.util.*;
 
+
+/**
+ * main class
+ */
 public class Main {
 
+    /**
+     *
+     * @param args - file name can be passed here
+     */
 
     public static void main(String[] args) {
 

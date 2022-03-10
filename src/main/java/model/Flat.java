@@ -7,22 +7,61 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
-
 public class Flat implements Serializable, Comparable<Flat> {
-    private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Long area; //Значение поля должно быть больше 0
-    private int numberOfRooms; //Максимальное значение поля: 10, Значение поля должно быть больше 0
-    private Furnish furnish = null; //Поле может быть null
-    private View view; //Поле не может быть null
-    private Transport transport; //Поле может быть null
-    private House house = null; //Поле может быть null
+    /**
+     * The value of the field must be greater than 0, The value of this field must be unique, The value of this field must be generated automatically
+     */
+    private int id;
+    /**
+     * Field cannot be null, String cannot be empty
+     */
+    private String name;
+    /**
+     * Field cannot be null
+     */
+    private Coordinates coordinates;
+    /**
+     * Field cannot be null, The value of this field must be generated automatically
+     */
+    private java.time.ZonedDateTime creationDate;
+    /**
+     * Field value must be greater than 0
+     */
+    private Long area;
+    /**
+     * Maximum field value: 10, Field value must be greater than 0
+     */
+    private int numberOfRooms;
+    /**
+     * Field can be null
+     */
+    private Furnish furnish = null;
+    /**
+     * Field cannot be null
+     */
+    private View view;
+    /**
+     * Field can be null
+     */
+    private Transport transport;
+    /**
+     * Field can be null
+     */
+    private House house = null;
 
+    /**
+     * empty construct for Json {@link utils.Converter}
+     */
     public Flat() {
     }
 
+    /**
+     * Initializes a newly created Flat object
+     *
+     * @param scanner input from where to read values
+     * @param out     output from where to request values
+     * @param id      id
+     */
     public Flat(Scanner scanner, Integer id, PrintStream out) {
         this.id = id;
         creationDate = ZonedDateTime.now();
@@ -80,6 +119,9 @@ public class Flat implements Serializable, Comparable<Flat> {
         return transport;
     }
 
+    /**
+     * @return Returns the string representation of this Flat.
+     */
     @Override
     public String toString() {
         String ret;

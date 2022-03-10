@@ -11,18 +11,47 @@ import java.util.Scanner;
 
 public class Invoker {
 
-
+    /**
+     * collection
+     */
     private final Hashtable<Integer, Flat> flats;
+    /**
+     * all available command
+     */
     private final LinkedHashMap<String, Command> commands = new LinkedHashMap<>();
+    /**
+     * collection + initialization date
+     */
     private final MyCollection myCollection;
+    /**
+     * initialization date
+     */
     private final Date getInitialization_date;
+    /**
+     * output {@link java.io.File} or System.out
+     */
     private final PrintStream out;
+    /**
+     * input {@link java.io.File} or System.in
+     */
     private final Scanner scanner;
+    /**
+     * name of file
+     */
     private final String filename;
-
+    /**
+     * class instance {@link ExecuteCommand }to call the method {@link ExecuteCommand#run(Scanner, PrintStream)}
+     */
     private ExecuteCommand execute;
 
-
+    /**
+     * Initializes a newly created Invoker object
+     *
+     * @param scanner      input
+     * @param out          output
+     * @param myCollection collection + initialization date
+     * @param fileName     name of file
+     */
     public Invoker(Scanner scanner, PrintStream out, MyCollection myCollection, String fileName) {
 
         this.scanner = scanner;
@@ -33,6 +62,11 @@ public class Invoker {
         this.filename = fileName;
     }
 
+    /**
+     * Creates, initializes all available commands. Populates a collection of commands with them
+     *
+     * @return value-filled collection of all available commands
+     */
     private LinkedHashMap<String, Command> initCommands() {
 
         HelpCommand help = new HelpCommand(commands);
@@ -71,6 +105,9 @@ public class Invoker {
         return commands;
     }
 
+    /**
+     * Creates, initializes {@link ExecuteCommand}, call the method {@link ExecuteCommand#run(Scanner, PrintStream)}
+     */
     public void run() {
 
         ExecuteCommand executeCommand = new ExecuteCommand(this.initCommands());

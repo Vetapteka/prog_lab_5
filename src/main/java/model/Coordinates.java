@@ -6,9 +6,24 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
+/**
+ *  apartment coordinates
+ */
 public class Coordinates implements Serializable {
-    private long x; //Максимальное значение поля: 285
-    private Float y; //Максимальное значение поля: 76, Поле не может быть null
+    /**
+     * max value is 285
+     */
+    private long x;
+    /**
+     * max field value: 76, Field cannot be null
+     */
+    private Float y;
+
+    /**
+     * Initializes a newly created Coordinates object
+     * @param scanner input from where to read values
+     * @param out output from where to request values
+     */
 
     public Coordinates(Scanner scanner, PrintStream out) {
         x = Reader.readNumber(Long::parseLong, scanner, out,
@@ -18,6 +33,9 @@ public class Coordinates implements Serializable {
                 "Coordinates y: ", Float.MIN_VALUE, 76);
     }
 
+    /**
+     * empty construct for Json {@link utils.Converter}
+     */
     public Coordinates() {
     }
 
