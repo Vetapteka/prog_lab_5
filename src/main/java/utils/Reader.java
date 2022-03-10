@@ -2,6 +2,7 @@ package utils;
 
 
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Function;
@@ -130,5 +131,24 @@ public class Reader {
         return res;
     }
 
+    /**
+     * replace backslash with double backslash for
+     *
+     * @param arg file name for parsing
+     * @return string with 2 backslashes instead of one
+     */
+    public static String readFileName(String arg) {
 
+        String delimiter = "\\\\";
+        String[] substr;
+        StringBuilder res = new StringBuilder();
+        substr = arg.split(delimiter);
+
+        for (int i = 0; i < substr.length - 1; i++) {
+            res.append(substr[i]).append(delimiter).append(delimiter);
+        }
+        res.append(substr[substr.length - 1]);
+
+        return res.toString();
+    }
 }

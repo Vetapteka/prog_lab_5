@@ -41,15 +41,12 @@ public class Converter {
      *
      * @param fileName where to read
      * @return {@link MyCollection}
+     * @throws IOException if file is invalid
      */
-    public static MyCollection fromJson(String fileName) {
+    public static MyCollection fromJson(String fileName) throws IOException {
         setDateFormat();
-        try {
-            return mapper.readValue(new File(fileName), MyCollection.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return mapper.readValue(new File(fileName), MyCollection.class);
+
     }
 
     /**
